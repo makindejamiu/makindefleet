@@ -12,6 +12,7 @@ class Car {
 
   // methods
   showinfo() {
+    print('\n-----------------------------------');
     print('The Model of the car is :  ${model}');
     print('The Color of the car is :  ${color}');
     print('The Id of the car is :  ${id}');

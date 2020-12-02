@@ -14,13 +14,13 @@ main() {
 
 options() {
   stdout.writeln('\nChoose from the options listed below:');
-  stdout.writeln('1) Add car to fleet');
-  stdout.writeln('2) View cars leased out');
-  stdout.writeln('3) View cars available');
-  stdout.writeln('4) View car properties');
-  stdout.writeln('5) Lease car if available');
-  stdout.writeln('6) returned lease cars');
-  stdout.writeln('7) Remove car');
+  stdout.writeln('1) Add fleet to garage');
+  stdout.writeln('2) View fleets leased out');
+  stdout.writeln('3) View fleets available');
+  stdout.writeln('4) View fleets properties');
+  stdout.writeln('5) Lease fleet if available');
+  stdout.writeln('6) returned lease fleets');
+  stdout.writeln('7) Remove fleet');
   String option = stdin.readLineSync();
 
   switch (option) {
@@ -53,20 +53,19 @@ options() {
 }
 
 add() {
-  stdout.writeln('\nAdd car to fleet');
+  stdout.writeln('\nAdd fleet to garage');
 
-  stdout.writeln('Enter car model: ');
+  stdout.writeln('Enter fleet model: ');
   String model = stdin.readLineSync();
 
-  stdout.writeln('Enter car year: ');
+  stdout.writeln('Enter fleet year: ');
   int year = int.parse(stdin.readLineSync());
 
-  stdout.writeln('Enter car color: ');
+  stdout.writeln('Enter fleet color: ');
   String color = stdin.readLineSync();
 
-  stdout.writeln('Select Car Status:');
+  stdout.writeln('Select fleet Status:');
   stdout.writeln('1) Available 2) Leased');
-  // stdout.writeln('Select Car Status:');
   String status = stdin.readLineSync();
   if (status == '1')
     status = 'Available';
@@ -83,7 +82,7 @@ add() {
 }
 
 leased() {
-  stdout.writeln('\nView cars leased out');
+  stdout.writeln('\nView fleets leased out');
   fleet.forEach((car) {
     if (car.status == 'Leased') {
       print(car.showinfo());
@@ -92,71 +91,70 @@ leased() {
 }
 
 available() {
-  stdout.writeln('\nView cars available');
+  stdout.writeln('\nView fleets available');
   fleet.forEach((car) {
     if (car.status == 'Available') {
-     print(car.showinfo());
+      print(car.showinfo());
     }
   });
 }
 
 properties() {
-  stdout.writeln('\nView cars properties');
+  stdout.writeln('\nView fleets properties');
   int count = 1;
   fleet.forEach((car) {
     print("${count} ${car.showinfo()}");
-//    car.showinfo();
     count++;
   });
 }
 
 availableForLease() {
-  stdout.writeln('\nLease car if available');
+  stdout.writeln('\nLease fleet if available');
   fleet.forEach((car) {
     if (car.status == 'Available') {
       print(car.showinfo());
     }
   });
   var found = false;
-  stdout.writeln('\nEnter the car id available for lease');
+  stdout.writeln('\nEnter the fleet id available for lease');
   int id = int.parse(stdin.readLineSync());
   fleet.forEach((car) {
     if (car.id == id && car.status == 'Available') {
       car.status = 'Leased';
-      print('Car ${car.model} is leased.');
+      print('Fleet ${car.model} is leased.');
       found = true;
     }
   });
-  if (!found) print('Car with ID ${id} is not leased.');
+  if (!found) print('fleet with ID ${id} is not leased.');
 }
 
 returned() {
-  stdout.writeln('\nReturned lease cars');
+  stdout.writeln('\nReturned lease fleet');
   fleet.forEach((car) {
     if (car.status == 'Leased') {
       print(car.showinfo());
     }
   });
-  stdout.writeln('\nEntr the car id returned');
+  stdout.writeln('\nEnter the fleet id returned');
   int id = int.parse(stdin.readLineSync());
   fleet.forEach((car) {
     if (car.id == id) {
       car.status = 'Available';
-      print('Car ${car.model} is available');
+      print('Fleet ${car.model} is available');
     }
   });
 }
 
 removed() {
-  stdout.writeln('\nRemove car');
+  stdout.writeln('\nRemove fleet');
   fleet.forEach((car) {
     if (car.status == 'Available') {
       print(car.showinfo());
     }
   });
-  stdout.writeln('\nEnter the car id to remove');
+  stdout.writeln('\nEnter the fleet id to remove');
   int id = int.parse(stdin.readLineSync());
   fleet.removeWhere((car) => car.id == id);
-  print('Car with ID ${id} is removed');
+  print('fleet with ID ${id} is removed');
 }
 // ...

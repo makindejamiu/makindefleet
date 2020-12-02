@@ -13,6 +13,6 @@ class Car {
   // methods
   showinfo() {
     // print('\n-----------------------------------');
-    print('ID: ${id}, Model: ${model}, color: ${color}, Year: ${year}, Status: ${status}');
+    return 'ID: ${id}, Model: ${model}, color: ${color}, Year: ${year}, Status: ${status}';
   }
 }

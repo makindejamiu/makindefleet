@@ -86,7 +86,7 @@ leased() {
   stdout.writeln('\nView cars leased out');
   fleet.forEach((car) {
     if (car.status == 'Leased') {
-      car.showinfo();
+      print(car.showinfo());
     }
   });
 }
@@ -95,7 +95,7 @@ available() {
   stdout.writeln('\nView cars available');
   fleet.forEach((car) {
     if (car.status == 'Available') {
-      car.showinfo();
+     print(car.showinfo());
     }
   });
 }
@@ -104,8 +104,8 @@ properties() {
   stdout.writeln('\nView cars properties');
   int count = 1;
   fleet.forEach((car) {
-    print("${count}. ");
-    car.showinfo();
+    print("${count} ${car.showinfo()}");
+//    car.showinfo();
     count++;
   });
 }
@@ -114,7 +114,7 @@ availableForLease() {
   stdout.writeln('\nLease car if available');
   fleet.forEach((car) {
     if (car.status == 'Available') {
-      car.showinfo();
+      print(car.showinfo());
     }
   });
   var found = false;
@@ -134,7 +134,7 @@ returned() {
   stdout.writeln('\nReturned lease cars');
   fleet.forEach((car) {
     if (car.status == 'Leased') {
-      car.showinfo();
+      print(car.showinfo());
     }
   });
   stdout.writeln('\nEntr the car id returned');
@@ -151,7 +151,7 @@ removed() {
   stdout.writeln('\nRemove car');
   fleet.forEach((car) {
     if (car.status == 'Available') {
-      car.showinfo();
+      print(car.showinfo());
     }
   });
   stdout.writeln('\nEnter the car id to remove');
